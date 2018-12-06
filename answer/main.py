@@ -40,9 +40,9 @@ def main():
 
     model = Cerebro()
     # model.train(train_data, val_data, test_data)
-    # model.find_best(val_data, test_data)
     # model.binary_test(test_data)
-    model.test_4way(test_data)
+    # model.test_4way(test_data)
+    model.output_cvs_predictions(test_data)
     # model.predict_batch(val_data[:5])
     # model.print_diff(test_data)
     # predict_and_save_to_file()

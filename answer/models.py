@@ -1,10 +1,9 @@
 import answer.tokenizers as tokenizers
 import numpy as np
-import os
 import random
 import tqdm
 
-from answer.settings import DEBUG, NUM_CLASSES, QUESTION_LEN, MODELS_DIR
+from answer.settings import DEBUG, NUM_CLASSES, QUESTION_LEN
 from answer.settings import WORD_EMBEDDINGS_DIM, WORD_EMBEDDINGS_PATH
 from answer.settings import SHOW_PER_SYSTEM_STATS
 from answer.utils import print_data_stats, pick_best_model_from_dir
@@ -768,89 +767,6 @@ class Cerebro(object):
             total = 1
         return 100.0 * correct / total
 
-    def find_best(self, test_data, val_data):
-        assert(isinstance(test_data, list))
-        assert(isinstance(val_data, list))
-
-        test_data = self.augment_data(test_data)
-
-        if DEBUG:
-            print_data_stats(test_data, "Binary accuracy")
-
-        tokenizer = tokenizers.SpacyTokenizer()
-        tokenizer.fit_on_texts(all_sentences(test_data))
-        if DEBUG:
-            print("Num words: {}\n".format(len(tokenizer.word_counts())))
-
-        test_data, test_labels = self.preprocess_data(test_data,
-                                                      tokenizer,
-                                                      "Binary acc",
-                                                      oversample=False)
-
-        embeddings_matrix = Cerebro.build_embeddings_matrix(tokenizer)
-        num_words = len(tokenizer.word_counts())
-        assert(embeddings_matrix.shape[0] == num_words + 1)
-
-        model = self.define_model(embeddings_matrix, scope="test")
-        model.summary()
-
-        models = []
-        for f in os.listdir(MODELS_DIR):
-            if not f.endswith(".hdf5"):
-                continue
-            weights_file = os.path.join(MODELS_DIR, f)
-
-            try:
-                model.load_weights(weights_file, by_name=True)
-
-                num_tests = test_labels.shape[0]
-                y = model.predict(test_data)
-                assert(y.shape[0] == num_tests)
-                assert(num_tests % 4 == 0)
-
-                correct = 0
-                total = 0
-                for i in range(0, num_tests, 4):
-                    expected = test_labels[i: i + 4, 1]
-                    assert(np.allclose(np.sum(expected), 1.0))
-                    expected = np.argmax(expected)
-
-                    predicted = y[i: i + 4, 1]
-                    predicted = np.argmax(predicted)
-
-                    if predicted == expected:
-                        correct += 1
-                    total += 1
-
-                assert(total == num_tests / 4)
-                if total == 0:
-                    total = 1
-                acc = 100.0 * correct / total
-                print("Model: {}, acc: {}".format(weights_file, acc))
-                models.append((acc, weights_file))
-            except Exception as e:
-                print(str(e))
-
-        val_data = self.augment_data(val_data)
-
-        tokenizer = tokenizers.SpacyTokenizer()
-        tokenizer.fit_on_texts(all_sentences(val_data))
-
-        val_data, val_labels = self.preprocess_data(val_data,
-                                                    tokenizer,
-                                                    "Binary acc",
-                                                    oversample=False)
-
-        embeddings_matrix = Cerebro.build_embeddings_matrix(tokenizer)
-        num_words = len(tokenizer.word_counts())
-        assert(embeddings_matrix.shape[0] == num_words + 1)
-
-        models = sorted(models, key=lambda x: x[0], reverse=True)
-        for acc, weights_file in models:
-            val_acc = self.get_4way_accuracy(val_data, val_labels,
-                                             model, weights_file)
-            print(weights_file, acc, val_acc)
-
     # Prints questions that are answered incorrectly by the information
     # retrieval, but correctly using the combined model.
     def print_diff(self, data, weights_file=None):
@@ -906,3 +822,165 @@ class Cerebro(object):
 
                 if np.argmax(tf_idf_scores) != predicted:
                     print(question_text)
+
+    def output_cvs_predictions(self, test_data, weights_file=None):
+        assert(isinstance(test_data, list))
+        assert(isinstance(weights_file, str) or weights_file is None)
+
+        # Extract ids.
+        ids = []
+        for entry in test_data:
+            ids.append(entry["id"])
+
+        test_data = self.augment_data(test_data)
+
+        if DEBUG:
+            print_data_stats(test_data, "Binary accuracy")
+
+        tokenizer = tokenizers.SpacyTokenizer()
+        tokenizer.fit_on_texts(all_sentences(test_data))
+        if DEBUG:
+            print("Num words: {}\n".format(len(tokenizer.word_counts())))
+
+        test_data, test_labels = self.preprocess_data(test_data,
+                                                      tokenizer,
+                                                      "Binary acc",
+                                                      oversample=False)
+
+        embeddings_matrix = Cerebro.build_embeddings_matrix(tokenizer)
+        num_words = len(tokenizer.word_counts())
+        assert(embeddings_matrix.shape[0] == num_words + 1)
+
+        model = self.define_model(embeddings_matrix, scope="test")
+        if weights_file is None:
+            weights_file = pick_best_model_from_dir()
+            if DEBUG:
+                print("Best model detected: {}".format(weights_file))
+        model.load_weights(weights_file, by_name=True)
+        model.summary()
+
+        num_tests = test_labels.shape[0]
+        y = model.predict(test_data)
+        assert(y.shape[0] == num_tests)
+        assert(num_tests % 4 == 0)
+        assert(num_tests == 4 * len(ids))
+
+        rez = {}
+        for i in range(0, num_tests, 4):
+            predicted = y[i: i + 4, 1]
+            predicted = np.argmax(predicted)
+            rez[ids[i >> 2]] = predicted
+
+        # Some questions in the ARC corpus expect 1,2,3,4 instead
+        # of A,B,C,D. Look for their ids and make sure we print
+        # in the desired format.
+        # NYSEDREGENTS_* want 1,2,3,4
+        want_digit = {
+                "NYSEDREGENTS_2015_8_28",
+                "NYSEDREGENTS_2015_8_21",
+                "NYSEDREGENTS_2010_8_2",
+                "NYSEDREGENTS_2010_8_13",
+                "NYSEDREGENTS_2010_8_14",
+                "NYSEDREGENTS_2015_8_24",
+                "NYSEDREGENTS_2013_8_12",
+                "NYSEDREGENTS_2008_8_15",
+                "NYSEDREGENTS_2012_8_5",
+                "NYSEDREGENTS_2013_8_9",
+                "NYSEDREGENTS_2012_8_9",
+                "NYSEDREGENTS_2015_8_33",
+                "NYSEDREGENTS_2010_8_12",
+                "NYSEDREGENTS_2008_8_10",
+                "NYSEDREGENTS_2015_8_2",
+                "NYSEDREGENTS_2012_8_26",
+                "NYSEDREGENTS_2015_8_20",
+                "NYSEDREGENTS_2013_8_27",
+                "NYSEDREGENTS_2013_8_36",
+                "NYSEDREGENTS_2012_8_6",
+                "NYSEDREGENTS_2010_8_34",
+                "NYSEDREGENTS_2012_8_27",
+                "NYSEDREGENTS_2015_8_31",
+                "NYSEDREGENTS_2010_8_9",
+                "NYSEDREGENTS_2015_8_45",
+                "NYSEDREGENTS_2010_8_28",
+                "NYSEDREGENTS_2008_8_24",
+                "NYSEDREGENTS_2012_8_3",
+                "NYSEDREGENTS_2010_8_30",
+                "NYSEDREGENTS_2010_8_15",
+                "NYSEDREGENTS_2015_8_19",
+                "NYSEDREGENTS_2010_8_7",
+                "NYSEDREGENTS_2013_8_16",
+                "NYSEDREGENTS_2013_8_43",
+                "NYSEDREGENTS_2013_8_23",
+                "NYSEDREGENTS_2013_8_13",
+                "NYSEDREGENTS_2013_8_8",
+                "NYSEDREGENTS_2015_8_25",
+                "NYSEDREGENTS_2008_8_33",
+                "NYSEDREGENTS_2010_8_8",
+                "NYSEDREGENTS_2008_8_18",
+                "NYSEDREGENTS_2015_8_1",
+                "NYSEDREGENTS_2008_8_26",
+                "NYSEDREGENTS_2015_8_34",
+                "NYSEDREGENTS_2010_8_6",
+                "NYSEDREGENTS_2013_8_19",
+                "NYSEDREGENTS_2013_8_7",
+                "NYSEDREGENTS_2010_8_31",
+                "NYSEDREGENTS_2013_8_40",
+                "NYSEDREGENTS_2013_8_11",
+                "NYSEDREGENTS_2015_8_8",
+                "NYSEDREGENTS_2013_8_35",
+                "NYSEDREGENTS_2013_8_21",
+                "NYSEDREGENTS_2008_8_37",
+                "NYSEDREGENTS_2015_8_30",
+                "NYSEDREGENTS_2015_8_32",
+                "NYSEDREGENTS_2008_8_2",
+                "NYSEDREGENTS_2008_8_12",
+                "NYSEDREGENTS_2015_8_6",
+                "NYSEDREGENTS_2013_8_22",
+                "NYSEDREGENTS_2012_8_31",
+                "NYSEDREGENTS_2012_8_30",
+                "NYSEDREGENTS_2012_8_15",
+                "NYSEDREGENTS_2012_8_13",
+                "NYSEDREGENTS_2008_8_16",
+                "NYSEDREGENTS_2013_8_14",
+                "NYSEDREGENTS_2010_8_27",
+                "NYSEDREGENTS_2013_8_37",
+                "NYSEDREGENTS_2013_8_5",
+                "NYSEDREGENTS_2013_8_41",
+                "NYSEDREGENTS_2008_8_28",
+                "NYSEDREGENTS_2015_8_5",
+                "NYSEDREGENTS_2013_8_6",
+                "NYSEDREGENTS_2015_8_16",
+                "NYSEDREGENTS_2012_8_18",
+                "NYSEDREGENTS_2012_8_17",
+                "NYSEDREGENTS_2015_8_26",
+                "NYSEDREGENTS_2012_8_11",
+                "NYSEDREGENTS_2008_8_14",
+                "NYSEDREGENTS_2012_8_43",
+                "NYSEDREGENTS_2015_8_35",
+                "NYSEDREGENTS_2012_8_32",
+                "NYSEDREGENTS_2010_8_18",
+                "NYSEDREGENTS_2010_8_41",
+                "NYSEDREGENTS_2012_8_16",
+                "NYSEDREGENTS_2008_8_25",
+                "NYSEDREGENTS_2012_8_40",
+                "NYSEDREGENTS_2013_8_26",
+                "NYSEDREGENTS_2008_8_4",
+                "NYSEDREGENTS_2010_8_32",
+                "NYSEDREGENTS_2008_8_7",
+                "NYSEDREGENTS_2012_8_12",
+                "NYSEDREGENTS_2015_8_22",
+                "NYSEDREGENTS_2012_8_14",
+                "NYSEDREGENTS_2008_8_29",
+                "NYSEDREGENTS_2010_8_17",
+                "NYSEDREGENTS_2010_8_39"
+        }
+        rez = list(rez.items())
+        # rez.sort(key=lambda x: x[0])
+        with open("predict.csv", "w") as g:
+            for x, y in rez:
+                assert(y in [0, 1, 2, 3])
+                if x in want_digit:
+                    g.write("{},{}\n".format(x, y + 1))
+                else:
+                    g.write("{},{}\n".format(x, chr(ord('A') + y)))
+            g.flush()
