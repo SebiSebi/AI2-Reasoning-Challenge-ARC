@@ -1,0 +1,21 @@
+syntax = "proto2";
+
+package services;
+
+option java_package = "clients";
+option java_outer_classname = "AnswerServiceProtos";
+
+message AnswerRequest {
+	// A QuestionDataSet which is JSONed.
+	required string json_question_dataset = 1;
+}
+
+message AnswerResponse {
+	// 4 * num_entries.
+	repeated double scores = 1;
+	required string exit_code = 2;
+}
+
+service AnswerService {
+	rpc Answer(AnswerRequest) returns (AnswerResponse) {}
+}

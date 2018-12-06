@@ -1,0 +1,36 @@
+syntax = "proto2";
+
+package data;
+ 
+option java_package = "data";
+option java_outer_classname = "QuestionsProtos";
+ 
+message Answer {
+	required string text = 1;
+	required bool is_correct = 2;
+	optional string context = 3;
+	optional double tf_idf_score = 4;
+}
+
+message Question {
+	required string question = 1;
+	repeated Answer answers = 2;
+	required string id = 3;
+	repeated string terms = 4;  // For essentialness terms.
+	map <string, double> et_scores = 5;  // For essentialness scores.
+}
+
+message QuestionDataSet {
+	repeated Question entries = 1;
+	optional string description = 2;
+	
+	enum Purpose {
+		UNKNOWN = 0;
+		TRAIN = 1;
+		VALIDATION = 2;
+		TEST = 3;
+		ALL = 4;
+	}
+	
+	required Purpose purpose = 3;
+}

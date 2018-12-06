@@ -1,0 +1,442 @@
+Reading data from data/questions/KaggleAllenAI/kaggle_allen_ai_val.json
+Working with Kaggle: The Allen AI Science Challenge dataset.
+Successfully parsed data at data/questions/KaggleAllenAI/kaggle_allen_ai_val.json
+
+Reading data from data/questions/ARC/Easy/ARC-Easy-Dev.json
+Working with ARC-Easy Feb2018 dataset.
+Successfully parsed data at data/questions/ARC/Easy/ARC-Easy-Dev.json
+0.7092972666062737
+{
+    "answers": [
+        {
+            "context": "They have the same number of protons as neutrons. Explain why atoms are always neutral in charge. Atomic Nucleus Identify the nucleus of the atom. Describe the size and mass of the nucleus. An atomic bomb explodes and generates a huge mushroom cloud. The tremendous energy released when the bomb explodes is incredibly destructive. The answer is the nucleus of the atom. They have a negative charge , and are the nucleus of an Antihydrogen atom .",
+            "isCorrect": false,
+            "text": "a single, negatively-charged nucleus.",
+            "tfIdfScore": 2.2025545835494995
+        },
+        {
+            "context": "The structural elements of an atom are protons (positively charged), neutrons (no charge), and electrons (negatively charged). Protons and neutrons are contained in the dense nucleus of the atom; the nucleus thus has a positive charge. Because opposites attract, electrons are attracted to this nucleus and move around it in the electron cloud. Electrons contain energy, and this energy is stored within the charge and movement of electrons and the bonds atoms make with one another. However, this energy is not always stable, depending on the number of electrons within an atom. Atoms are more stable when their electrons orbit in pairs. An atom with an odd number of electrons must have an unpaired electron. Water will always have 2 times the number of hydrogen atoms as oxygen atoms.",
+            "isCorrect": false,
+            "text": "a stable number of charged neutrons.",
+            "tfIdfScore": 2.5240044593811035
+        },
+        {
+            "context": "That\u2019s because atoms are always neutral in electric charge. Summary Atoms are the building blocks of matter. They are the smallest particles of an element that still have the element\u2019s properties. All atoms are very small, but atoms of different elements vary in size. Three main types of particles that make up all atoms are protons, neutrons, and electrons. Explore More Examine the animated atomic models at the following URL, and then answer the questions below. How is the hydrogen atom different from the atoms of all the other elements 2. For example , oxygen atoms always have two bonds with other atoms , carbon atoms always have four bonds with other atoms , and nitrogen atoms always have three bonds with other atoms .",
+            "isCorrect": false,
+            "text": "\"shared\" electrons from another atom.",
+            "tfIdfScore": 2.492622673511505
+        },
+        {
+            "context": "Called the northern lights, this phenomenon of nature shows that ions respond to a magnetic field. Atoms Are Neutral The northern lights aren\u2019t caused by atoms, because atoms are not charged particles. An atom always has the same number of electrons as protons. Electrons have an electric charge of -1 and protons have an electric charge of +1. Therefore, the charges of an atom\u2019s electrons and protons \u201ccancel out. \u201d This explains why atoms are neutral in electric charge. A: If an atom were to gain extra electrons, it would have more electrons than protons. Atoms must have equal numbers of protons and electrons.",
+            "isCorrect": true,
+            "text": "equal numbers of protons and electrons.",
+            "tfIdfScore": 2.8206393718719482
+        }
+    ],
+    "etScores": {
+        "An": 0.00034074868162861096,
+        "always": 0.027189888851717116,
+        "atom": 0.9967988303958919,
+        "have": 0.00013834310218499012,
+        "will": 0.017932036728598177
+    },
+    "id": "101758",
+    "question": "An atom will always have"
+}
+{
+    "answers": [
+        {
+            "context": "An atom always has the same number of electrons as protons. Electrons have an electric charge of -1 and protons have an electric charge of +1. Therefore, the charges of an atom\u2019s electrons and protons \u201ccancel out. \u201d This explains why atoms are neutral in electric charge. A: If an atom were to gain extra electrons, it would have more electrons than protons. This would give it a negative charge, so it would no longer be neutral. Atoms to Ions Atoms cannot only gain extra electrons. When the atom has more electrons than protons, it has a negative charge.",
+            "isCorrect": false,
+            "text": "negatively charged.",
+            "tfIdfScore": 2.821743130683899
+        },
+        {
+            "context": "Called the northern lights, this phenomenon of nature shows that ions respond to a magnetic field. Atoms Are Neutral The northern lights aren\u2019t caused by atoms, because atoms are not charged particles. An atom always has the same number of electrons as protons. Electrons have an electric charge of -1 and protons have an electric charge of +1. Therefore, the charges of an atom\u2019s electrons and protons \u201ccancel out. \u201d This explains why atoms are neutral in electric charge. A: If an atom were to gain extra electrons, it would have more electrons than protons. For example , a neutral hydrogen atom has one proton and one electron .",
+            "isCorrect": false,
+            "text": "neutral.",
+            "tfIdfScore": 2.722309112548828
+        },
+        {
+            "context": "Explore More Do the atom builder activity at the following URL. Use the activity to build a stable atom that has three protons. Make sure you take atomic forces into account in your atom. Include enough protons and electrons to avoid creating a charged or radioactive atom. If you need help, read the atom builder guides listed at the bottom of the Web page. Which subatomic particles are affected by electromagnetic force. How does the weak nuclear force differ from the other fundamental forces inside the atom. Particles that are commonly emitted by radioactive elements are alpha particles, which are two protons and two neutrons (equivalent to the nucleus of a helium atom, which has an atomic mass of 4), and beta particles, which are high-speed electrons.",
+            "isCorrect": false,
+            "text": "radioactive.",
+            "tfIdfScore": 1.9842018485069275
+        },
+        {
+            "context": "The particular atom represented by the model is helium, but the particles of all atoms are arranged in the same way. At the center of the atom is a dense area called the nucleus, where all the protons and neutrons are clustered closely together. Helium has two protons and two neutrons in its nucleus and two electrons moving around the nucleus. Atoms of other elements have different numbers of subatomic particles, but the number of protons always equals the number of electrons. This makes atoms neutral in charge because the positive and negative charges \u201ccancel out. Q: Lithium has three protons, four neutrons, and three electrons. Sketch a model of a lithium atom, similar to the model above for helium. An atom that loses electrons has more protons than electrons and is positively charged.",
+            "isCorrect": true,
+            "text": "positively charged.",
+            "tfIdfScore": 2.8961628079414368
+        }
+    ],
+    "etScores": {
+        ",": 0.6574108272790908,
+        "If": 9.698517437755072e-05,
+        "an": 0.0001335516682047455,
+        "and": 0.0002225618125521578,
+        "atom": 0.9722810525563546,
+        "electrons": 0.9860016609891318,
+        "five": 0.431185894459486,
+        "four": 0.44801970571279526,
+        "has": 6.933693305199995e-05,
+        "is": 2.7062634626418002e-05,
+        "protons": 0.9965607280018958,
+        "the": 1.296781429971361e-06
+    },
+    "id": "Mercury_7007665",
+    "question": "If an atom has five protons and four electrons, the atom is"
+}
+*********************************************************
+
+*********************************************************
+0.5797386715376658
+{
+    "answers": [
+        {
+            "context": "Methane is the main component of natural gas, which is burned in many home furnaces. During burning, methane combines with oxygen in the air to produce entirely different chemical substances, including the gases carbon dioxide and water vapor. You can watch some very colorful chemical changes occurring in the video at this URL: Click on the image above for more content Identifying Chemical Changes Most chemical changes are not as dramatic as exploding fireworks, so how can you tell whether a chemical change has occurred. You just need to know what to look for. A chemical change has probably occurred if bubbles are released, there is a change of color, or an odor is produced. Other clues include the release of heat, light, or loud sounds. Examples of chemical changes that produce these clues are shown in the Figure below . _ _ Bubbles, and heat change are examples of chemical reactions.",
+            "isCorrect": false,
+            "text": "heating a tungsten wire until it glows brightly",
+            "tfIdfScore": 1.659081906080246
+        },
+        {
+            "context": "\u2003 A chemical change occurs whenever matter changes into an entirely different substance with different chemical properties. A chemical change is also called a chemical reaction. Many complex chemical changes occur to produce the explosions of fireworks. An example of a simpler chemical change is the burning of methane. Methane is the main component of natural gas, which is burned in many home furnaces. During burning, methane combines with oxygen in the air to produce entirely different chemical substances, including the gases carbon dioxide and water vapor. You can watch some very colorful chemical changes occurring in the video at this URL: Click on the image above for more content Identifying Chemical Changes Most chemical changes are not as dramatic as exploding fireworks, so how can you tell whether a chemical change has occurred. _ _ Bubbles, and heat change are examples of chemical reactions.",
+            "isCorrect": false,
+            "text": "heating a block of ice to form liquid water",
+            "tfIdfScore": 1.887277603149414
+        },
+        {
+            "context": "Indeed, if there were no chemical changes, chemistry as such would not exist. Chemical changes are a fundamental part of chemistry. Because chemical changes are so central, it may be no surprise that chemistry has developed some special ways of presenting them. For example, one chemical property of hydrogen is that it will react with oxygen to make water. We can write that as follows: hydrogen reacts with oxygen to make water We can represent this chemical change more succinctly as hydrogen + oxygen \u2192 water where the + sign means that the two substances interact chemically with each other and the \u2192 symbol implies that a chemical reaction takes place. But substances can also be represented by chemical formulas. Remembering that hydrogen and oxygen both exist as diatomic molecules, we can rewrite our chemical change as H2 + O2\u2192 H2O This is an example of a chemical equation1, which is a concise way of representing a chemical reaction. Except for example when their energy is being used by the life forms in the oceans for chemical changes, which do not create heat, such as photosynthesis.",
+            "isCorrect": true,
+            "text": "passing an electric current through water to form hydrogen and oxygen",
+            "tfIdfScore": 1.7633371949195862
+        },
+        {
+            "context": "\u2003 A chemical change occurs whenever matter changes into an entirely different substance with different chemical properties. A chemical change is also called a chemical reaction. Many complex chemical changes occur to produce the explosions of fireworks. An example of a simpler chemical change is the burning of methane. Methane is the main component of natural gas, which is burned in many home furnaces. During burning, methane combines with oxygen in the air to produce entirely different chemical substances, including the gases carbon dioxide and water vapor. You can watch some very colorful chemical changes occurring in the video at this URL: Click on the image above for more content Identifying Chemical Changes Most chemical changes are not as dramatic as exploding fireworks, so how can you tell whether a chemical change has occurred. Except for example when their energy is being used by the life forms in the oceans for chemical changes, which do not create heat, such as photosynthesis.",
+            "isCorrect": false,
+            "text": "adding sugar crystals to water to form a clear, colorless liquid",
+            "tfIdfScore": 1.6670439839363098
+        }
+    ],
+    "etScores": {
+        "?": 0.9186653176788241,
+        "Which": 1.596533192582683e-06,
+        "a": 3.2327079281913028e-06,
+        "an": 2.7029207467421655e-05,
+        "change": 0.9376301674870774,
+        "chemical": 0.9897298496898657,
+        "example": 0.7321840211749077,
+        "is": 1.65324507747755e-05,
+        "of": 1.8338529741868114e-06
+    },
+    "id": "101918",
+    "question": "Which is an example of a chemical change?"
+}
+{
+    "answers": [
+        {
+            "context": "408 Chapter 16 | The Body\u2019s Systems The components of the human digestive system are shown. Oral Cavity Both physical and chemical digestion begin in the mouth or oral cavity, which is the point of entry of food into the digestive system. The food is broken into smaller particles by mastication, the chewing action of the teeth. All mammals have teeth and can chew their food to begin the process of physically breaking it down into smaller particles. The chemical process of digestion begins during chewing as food mixes with saliva, produced by the salivary glands (Figure 16. Saliva contains mucus that moistens food and buffers the pH of the food. Saliva also contains lysozyme, which has antibacterial action. For example, in the digestive system teeth are responsible for chewing the food.",
+            "isCorrect": false,
+            "text": "teeth chewing food",
+            "tfIdfScore": 2.0776458978652954
+        },
+        {
+            "context": "Stomach The stomach is a sac-like organ in which food is further digested both mechanically and chemically. (To see an animation of how the stomach digests food, go to the link below. ) Churning movements of the stomach\u2019s thick, muscular walls complete the mechanical breakdown of food. The churning movements also mix food with digestive fluids secreted by the stomach. It kills bacteria in food and gives the stomach the low (acidic) pH needed by digestive enzymes that work in the stomach. The main enzyme is pepsin , which chemically digests protein. Click on the image above for more content The stomach stores the partly digested food until the small intestine is ready to receive it. Storage and churning of food in stomach",
+            "isCorrect": false,
+            "text": "food churning in the stomach",
+            "tfIdfScore": 2.2380746603012085
+        },
+        {
+            "context": "32 The gut microbiome includes all the bacteria that aid in chemical digestion in the intestines. Changing its composition can change the way that food is digested since not all bacteria have the same macromolecule-digesting enzymes. Additionally, changes in gut microbiome can lead to the establishment of pathogenic bacteria populations that cause inflammation in the gut or other disease. 34 Hormones control the different digestive enzymes that are secreted in the stomach and the intestine during the process of digestion and absorption. For example, the hormone gastrin stimulates stomach acid secretion in response to food intake. The hormone somatostatin stops the release of stomach acid. 36 Somatostatin is the hormone that inhibits the release of HCl into the stomach lumen after the chyme has moved to the intestine. Is digesting food a chemical or physical change",
+            "isCorrect": false,
+            "text": "food moving through the intestines",
+            "tfIdfScore": 1.831892490386963
+        },
+        {
+            "context": "Digestive enzymes speed up the reactions of chemical digestion. Digestive enzymes are secreted by glands in the mucous membranes of the mouth, stomach, small intestine, and pancreas. Different digestive enzymes help break down different types of food molecules, including carbo- hydrates, proteins, and lipids. The name of a digestive enzyme typically ends with the suffix -ase, which means \u201cenzyme\u201d. The rest of the name refers to the type of food molecules the enzyme helps digest. For example, the enzyme lipase helps digest lipid molecules, and the enzyme lactase helps digest molecules of the sugar lactose. After food is digested, the resulting nutrients are absorbed. Digestion \u2013 physical and chemical (enzymes) breaking down of food.",
+            "isCorrect": true,
+            "text": "enzymes breaking down food",
+            "tfIdfScore": 2.185152530670166
+        }
+    ],
+    "etScores": {
+        "?": 0.5205479010939598,
+        "Which": 4.177336177235702e-06,
+        "a": 5.40437132713123e-05,
+        "change": 0.7753720313310624,
+        "chemical": 0.8624286188744008,
+        "digestion": 0.956915451741952,
+        "during": 0.00037336812711146193,
+        "example": 0.23396853990852834,
+        "food": 0.8696642350405455,
+        "shows": 0.48859035074710844,
+        "to": 3.5606933624876544e-05
+    },
+    "id": "Mercury_7245875",
+    "question": "Which example shows a chemical change to food during digestion?"
+}
+*********************************************************
+
+*********************************************************
+0.5101490193104813
+{
+    "answers": [
+        {
+            "context": "Chapter 47 | Conservation Biology and Biodiversity 1489 47. 1 | The Biodiversity Crisis By the end of this section, you will be able to do the following: \u2022 Define biodiversity in terms of species diversity and abundance \u2022 Describe biodiversity as the equilibrium of naturally fluctuating rates of extinction and speciation \u2022 Identify historical causes of high extinction rates in Earth\u2019s history Traditionally, ecologists have measured biodiversity, a general term for the number of species present in the biosphere, by taking into account both the number of species and their relative abundance to each other. Biodiversity can be estimated at a number of levels of organization of living organisms. These estimation indices, which came from information theory, are most useful as a first step in quantifying biodiversity between and within ecosystems; they are less useful when the main concern among conservation biologists is simply the loss of biodiversity. However, biologists recognize that measures of biodiversity, in terms of species diversity, may help focus efforts to preserve the biologically or technologically important elements of biodiversity. The Lake Victoria cichlids provide an example with which we can begin to understand biodiversity. The biologists studying cichlids in the 1980s discovered hundreds of cichlid species representing a variety of specializations to specialized habitat types and specific feeding strategies: such as eating plankton floating in the water, scraping/ eating algae from rocks, eating insect larvae from the lake bottom, and eating the eggs of other species of cichlid. Currently, biodiversity is decreasing due to rapid extinction of species.",
+            "isCorrect": true,
+            "text": "a species extinction in the ecosystem due to climate change",
+            "tfIdfScore": 1.3240417838096619
+        },
+        {
+            "context": "When they sampled for fish in different locations of the lake, the researchers identified over 500 evolved species in total. However, the scientists soon discovered that the invasive Nile Perch was destroying the lake\u2019s cichlid population, bringing hundreds of cichlid species to extinction with devastating rapidity. Chapter 47 | Conservation Biology and Biodiversity 1489 47. 1 | The Biodiversity Crisis By the end of this section, you will be able to do the following: \u2022 Define biodiversity in terms of species diversity and abundance \u2022 Describe biodiversity as the equilibrium of naturally fluctuating rates of extinction and speciation \u2022 Identify historical causes of high extinction rates in Earth\u2019s history Traditionally, ecologists have measured biodiversity, a general term for the number of species present in the biosphere, by taking into account both the number of species and their relative abundance to each other. Biodiversity can be estimated at a number of levels of organization of living organisms. These estimation indices, which came from information theory, are most useful as a first step in quantifying biodiversity between and within ecosystems; they are less useful when the main concern among conservation biologists is simply the loss of biodiversity. However, biologists recognize that measures of biodiversity, in terms of species diversity, may help focus efforts to preserve the biologically or technologically important elements of biodiversity. 24 Which consequence could most likely be associated with a decrease in biodiversity in an area?",
+            "isCorrect": false,
+            "text": "a decrease in the total population of an ecosystem",
+            "tfIdfScore": 1.8096292614936829
+        },
+        {
+            "context": "Chapter 47 | Conservation Biology and Biodiversity 1489 47. 1 | The Biodiversity Crisis By the end of this section, you will be able to do the following: \u2022 Define biodiversity in terms of species diversity and abundance \u2022 Describe biodiversity as the equilibrium of naturally fluctuating rates of extinction and speciation \u2022 Identify historical causes of high extinction rates in Earth\u2019s history Traditionally, ecologists have measured biodiversity, a general term for the number of species present in the biosphere, by taking into account both the number of species and their relative abundance to each other. Biodiversity can be estimated at a number of levels of organization of living organisms. These estimation indices, which came from information theory, are most useful as a first step in quantifying biodiversity between and within ecosystems; they are less useful when the main concern among conservation biologists is simply the loss of biodiversity. However, biologists recognize that measures of biodiversity, in terms of species diversity, may help focus efforts to preserve the biologically or technologically important elements of biodiversity. The Lake Victoria cichlids provide an example with which we can begin to understand biodiversity. The biologists studying cichlids in the 1980s discovered hundreds of cichlid species representing a variety of specializations to specialized habitat types and specific feeding strategies: such as eating plankton floating in the water, scraping/ eating algae from rocks, eating insect larvae from the lake bottom, and eating the eggs of other species of cichlid. \u2014 The biodiversity of this western New York ecosystem will decrease, causing instability.",
+            "isCorrect": false,
+            "text": "an immigration of species from another ecosystem",
+            "tfIdfScore": 1.2750221490859985
+        },
+        {
+            "context": "When they sampled for fish in different locations of the lake, the researchers identified over 500 evolved species in total. However, the scientists soon discovered that the invasive Nile Perch was destroying the lake\u2019s cichlid population, bringing hundreds of cichlid species to extinction with devastating rapidity. Chapter 47 | Conservation Biology and Biodiversity 1489 47. 1 | The Biodiversity Crisis By the end of this section, you will be able to do the following: \u2022 Define biodiversity in terms of species diversity and abundance \u2022 Describe biodiversity as the equilibrium of naturally fluctuating rates of extinction and speciation \u2022 Identify historical causes of high extinction rates in Earth\u2019s history Traditionally, ecologists have measured biodiversity, a general term for the number of species present in the biosphere, by taking into account both the number of species and their relative abundance to each other. Biodiversity can be estimated at a number of levels of organization of living organisms. These estimation indices, which came from information theory, are most useful as a first step in quantifying biodiversity between and within ecosystems; they are less useful when the main concern among conservation biologists is simply the loss of biodiversity. However, biologists recognize that measures of biodiversity, in terms of species diversity, may help focus efforts to preserve the biologically or technologically important elements of biodiversity. What are the type of factors which increase/decrease the biodiversity of an ecosystem?",
+            "isCorrect": false,
+            "text": "an increase in the total population of an ecosystem",
+            "tfIdfScore": 1.373022437095642
+        }
+    ],
+    "etScores": {
+        "?": 0.627269658446312,
+        "MOST": 0.005344083221280016,
+        "Which": 2.570010187241678e-06,
+        "a": 3.318378165317881e-06,
+        "biodiversity": 0.9405458541936241,
+        "cause": 0.6471564576029778,
+        "decrease": 0.8790998796001077,
+        "following": 0.0035602490563178433,
+        "in": 5.4093574249236555e-06,
+        "is": 7.288085484447038e-06,
+        "likely": 0.3777167234569788,
+        "of": 2.6037742131279627e-07,
+        "the": 6.322350355247863e-07,
+        "to": 1.0177855011761494e-05
+    },
+    "id": "101475",
+    "question": "Which of the following is MOST likely to cause a decrease in biodiversity?"
+}
+{
+    "answers": [
+        {
+            "context": "However, many earthquakes are not preceded by foreshocks and clusters of small earthquakes are not neces- sarily followed by a large earthquake. Large earthquakes are also often preceded by the tilting of the ground surface, which is caused by the buildup of stress in the rocks. Seismologists measure the ground tilt and use the changes to predict an impending earthquake. While this technique has been somewhat successful, it has also been a part of predictions of earthquakes that never came and has failed to predict some that did. Water levels in wells fluctuate as water moves into or out of fractures before an earthquake. This information can also be used as a possible, but uncertain, predictor of large earthquakes. The most successful earthquake prediction was on February 4, 1975. They used seismographs to determine how frequent and how intense the earthquakes were; which then was correlated with earthquakes being caused by tectonic stresses and the shifting in Earth's crust.",
+            "isCorrect": true,
+            "text": "shifting rock layers",
+            "tfIdfScore": 1.5815313458442688
+        },
+        {
+            "context": "Surface waves are the slowest of all seismic waves, traveling at 2. Love waves move side-to-side much like a snake. Rayleigh waves move in rolls, like ocean swells (Figure 7. These waves cause objects to fall and rise, while swaying back and forth. These motions cause damage to rigid structures during an earthquake. Tsunami Earthquakes can cause deadly ocean waves called tsunami, although tsunami can be caused by any shock to ocean water, including a meteorite impact, landslide, or a nuclear explosion. When ocean water is displaced by the sharp jolt of an undersea earthquake, the seismic www. This quote is from Seismologists who believe that human construction and buildings crashing down during earthquakes are the cause of most deaths.",
+            "isCorrect": false,
+            "text": "crashing meteorites",
+            "tfIdfScore": 1.061455249786377
+        },
+        {
+            "context": "When an elastic material is stretched or compressed, it exerts elastic force. This force increases the more the material is stretched or compressed. Elastic force has many uses, from hair scrunchies to bed springs. Explore More At the following URL, read the short article on elasticity and watch the earthquake animation. Materials with elastic properties have a point at which any additional force will permanently change the object's shape. Which type of material is most likely to withstand an earthquake without 5. In an earthquake, seismic waves are generated by a. Most forces are exerted by magnets.",
+            "isCorrect": false,
+            "text": "magnetic force",
+            "tfIdfScore": 1.2512284517288208
+        },
+        {
+            "context": "The surface waves arrive just after the S-waves. If the earthquake has a shallow focus, the surface waves are the largest ones recorded. 42 These seismograms show the arrival of P-waves and S-waves. A seismogram may record P-waves and surface waves, but not S-waves. This means that it was located more than halfway around the Earth from the earthquake. So the liquid outer core creates an S-wave shadow zone on the opposite side of the Earth from the quake. Like most things, seismographs are now digital. D. Earthquakes and volcanoes are caused by the shift in continents within the Earth's inner core.",
+            "isCorrect": false,
+            "text": "rotation of the core",
+            "tfIdfScore": 0.8931159377098083
+        }
+    ],
+    "etScores": {
+        "?": 0.8422681048512459,
+        "Which": 3.9468870092207455e-07,
+        "cause": 0.8778389194980264,
+        "earthquakes": 0.9599657489918172,
+        "following": 0.00023925426257846992,
+        "is": 2.3028601255248306e-06,
+        "likely": 0.22137018106877804,
+        "most": 0.00014908256389389862,
+        "of": 8.178656871749012e-08,
+        "the": 8.890317850784868e-08
+    },
+    "id": "Mercury_7094080",
+    "question": "Which of the following is the most likely cause of earthquakes?"
+}
+*********************************************************
+
+*********************************************************
+0.5031026124151314
+{
+    "answers": [
+        {
+            "context": "We saw in Chapter 3 \"Atoms, Molecules, and Ions\" that atoms are composed of subatomic particles\u2014protons, neutrons, and electrons. Protons and neutrons are located in the nucleus and provide most of the mass of an atom, while electrons circle the nucleus in shells and subshells and account for an atom\u2019s size. We also introduced in Chapter 3 \"Atoms, Molecules, and Ions\" the notation for succinctly representing an isotope of a particular atom: The element in this example, represented by the symbol C, is carbon. Its atomic number, 6, is the subscript next to the symbol and is the number of protons in the atom. The mass number, the superscript next to the symbol, is the sum of the number of protons and neutrons in the nucleus of this particular isotope. In this case, the mass number is 12, which means that the number of neutrons in the atom is 12 \u2212 6 = 6 (that is, the mass number of the atom minus the number of protons in the nucleus equals the number of neurons). Occasionally, the atomic number is omitted in this notation because the symbol of the element itself conveys its characteristic atomic number. The center of the atom where protons and neutrons are located",
+            "isCorrect": false,
+            "text": "in the protons",
+            "tfIdfScore": 1.9950172901153564
+        },
+        {
+            "context": "In contrast, the particles that were highly deflected must have experienced a tremendously powerful force within the atom. He concluded that all of the positive charge and the majority of the mass of the atom must be concentrated in a very small space in the atom\u2019s interior, which he called the nucleus. The nucleus is the tiny, dense, central core of the atom and is composed of protons and neutrons. Rutherford\u2019s atomic model became known as the nuclear model . In the nuclear atom, the protons and neutrons, which comprise nearly all of the mass of the atom, are located in the nucleus at the center of the atom. The electrons are distributed around the nucleus and occupy most of the volume of the atom. It is worth emphasizing just how small the nucleus is compared to the rest of the atom. Where is the nucleus of the atom located?",
+            "isCorrect": true,
+            "text": "in the nucleus",
+            "tfIdfScore": 2.332221508026123
+        },
+        {
+            "context": "\u2022 In order to explain the results of his Gold Foil experiment, Rutherford suggested that the positive matter in the gold atoms was concentrated at the center of the gold atom in what we now call the nucleus of the atom. \u2022 Rutherford\u2019s model of the atom didn\u2019t explain where electrons were located in an atom. it will move down and to the left e. it will move down and to the left Atomic Terminology Lesson Objectives \u2022 Describe the properties of electrons, protons, and neutrons. \u2022 Define and use an atom\u2019s atomic number (Z) and mass number (A). \u2022 Define an isotope, and explain how isotopes affect an atom\u2019s mass, and an element's atomic mass. Introduction Dalton\u2019s Atomic Theory explained a lot about matter, chemicals, and chemical reactions. where me is the electron's mass, e is its charge, h is Planck's constant and Z is the atom's atomic number (1 for hydrogen).",
+            "isCorrect": false,
+            "text": "in the electrons",
+            "tfIdfScore": 1.7330184578895569
+        },
+        {
+            "context": "We saw in Chapter 3 \"Atoms, Molecules, and Ions\" that atoms are composed of subatomic particles\u2014protons, neutrons, and electrons. Protons and neutrons are located in the nucleus and provide most of the mass of an atom, while electrons circle the nucleus in shells and subshells and account for an atom\u2019s size. We also introduced in Chapter 3 \"Atoms, Molecules, and Ions\" the notation for succinctly representing an isotope of a particular atom: The element in this example, represented by the symbol C, is carbon. Its atomic number, 6, is the subscript next to the symbol and is the number of protons in the atom. The mass number, the superscript next to the symbol, is the sum of the number of protons and neutrons in the nucleus of this particular isotope. In this case, the mass number is 12, which means that the number of neutrons in the atom is 12 \u2212 6 = 6 (that is, the mass number of the atom minus the number of protons in the nucleus equals the number of neurons). Occasionally, the atomic number is omitted in this notation because the symbol of the element itself conveys its characteristic atomic number. The center of the atom where protons and neutrons are located",
+            "isCorrect": false,
+            "text": "in the neutrons",
+            "tfIdfScore": 1.994973599910736
+        }
+    ],
+    "etScores": {
+        "?": 0.7033839106559754,
+        "Where": 8.746177518332842e-05,
+        "atom": 0.9741120618302375,
+        "is": 1.288278022002487e-05,
+        "located": 0.514773178100586,
+        "mass": 0.8722974451258778,
+        "most": 0.00033516257935843895,
+        "of": 2.0062777224438834e-06,
+        "the": 7.301744140875143e-07
+    },
+    "id": "100361",
+    "question": "Where is most of the mass of the atom located?"
+}
+{
+    "answers": [
+        {
+            "context": "An electron cloud has variable densities: a high density where the electron is most likely to be and a low density where the electron is least likely to be ( Figure below ). 15 An electron cloud: the darker region nearer the nucleus indicates a high probability of finding the electron, while the lighter region further from the nucleus indicates a lower probability of finding the electron. In order to specifically define the shape of the cloud, it is customary to refer to the region of space within which there is a 90% probability of finding the electron. This is called an orbital , the three-dimensional region of space that indicates where there is a high probability of finding an electron. Summary The Schr\u00f6dinger wave equation replaced the Bohr ideas about electron location with an uncertainty factor. The location of the electron can only be given as a probability that the electron is somewhere in a certain area. Practice Questions Use the link below to answer the following questions: Review Questions electron cloud: The location of the electrons in the quantum mechanical model of the atom. Where did Thomson think electrons were located in the atom?",
+            "isCorrect": false,
+            "text": "electron clouds",
+            "tfIdfScore": 2.682339668273926
+        },
+        {
+            "context": "Atomic Orbital Overlap There are successful theories that describe the electronic structure of atoms. We can use quantum mechanics to predict the specific regions around an atom where electrons are likely to be located: A spherical shape for an s orbital, a dumbbell shape for a p orbital, and so forth. However, these predictions only describe the orbitals around free atoms. When atoms bond to form molecules, atomic orbitals are not sufficient to describe the regions where electrons will be located in the molecule. A more complete understanding of electron distributions requires a model that can account for the electronic structure of molecules. One popular theory holds that a covalent bond forms when a pair of electrons is shared by two atoms and is simultaneously attracted by the nuclei of both atoms. In the following sections, we will discuss how such bonds are described by valence bond theory and hybridization. An atom's electron configuration is the orbital description of the locations of the electrons in an unexcited atom.",
+            "isCorrect": true,
+            "text": "orbitals",
+            "tfIdfScore": 2.700506091117859
+        },
+        {
+            "context": "Summary The Schr\u00f6dinger wave equation replaced the Bohr ideas about electron location with an uncertainty factor. The location of the electron can only be given as a probability that the electron is somewhere in a certain area. Practice Questions Use the link below to answer the following questions: Review Questions electron cloud: The location of the electrons in the quantum mechanical model of the atom. orbital: The three-dimensional region of space that indicates where there is a high probability of finding an electron. quantum mechanical model: A model of the atom that derives from the Schr\u00f6dinger wave equation and deals with probabilities. wave function: Give only the probability of finding an electron at a given point around the nucleus. Determine quantum numbers for specific electrons when given appropriate data. The electron cloud model says that we can not know exactly where an electron is , but the electrons are more likely to be in specific areas of an atom .",
+            "isCorrect": false,
+            "text": "models",
+            "tfIdfScore": 2.163920819759369
+        },
+        {
+            "context": "Remember that the atoms located within a family but lower on the periodic table are larger since there are more electrons filling more energy levels. For example, an atom of chlorine is smaller than iodine; or, an atom of oxygen is smaller than sulfur. When an electron is added to a large atom, less energy is released because the electron cannot move as close to the nucleus as it can in a smaller atom. Therefore, as the atoms in a family get larger, the electron affinity gets smaller. There is an exception to this when it involves certain small atoms. Electron affinity for fluorine is less than chlorine most likely due to the electron-electron repulsions that occur between the electrons where n = 2. This phenomenon is observed in other families as well. an electron in the outermost energy level of an atom",
+            "isCorrect": false,
+            "text": "energy levels",
+            "tfIdfScore": 2.238647162914276
+        }
+    ],
+    "etScores": {
+        "?": 0.6936972215771675,
+        "Where": 3.4944376875500896e-05,
+        "an": 1.3403372702214255e-05,
+        "are": 3.814110746134247e-05,
+        "atom": 0.9711631122743711,
+        "electrons": 0.9810669286758639,
+        "in": 1.029489862958144e-05,
+        "located": 0.4119061455130577
+    },
+    "id": "Mercury_7007630",
+    "question": "Where are electrons in an atom located?"
+}
+*********************************************************
+
+*********************************************************
+0.5031026124151314
+{
+    "answers": [
+        {
+            "context": "The Sun is at the center of the solar system. The Sun makes up almost all of the mass of the solar system. Explore More Use the resource below to answer the questions that follow. Introduction to the Sun and Solar System at Click on the image above for more content 4. What is the structure of the solar system from the center to the farthest 5. Which type of solar system bodies come from the farthest part of the solar Review Interior of the Sun Describe the internal layers of the Sun. Different instruments pick up different features of the Sun. Sun\tNoun\t# The 'Sun' is the star at the center of our solar system and closest to the earth.",
+            "isCorrect": true,
+            "text": "The sun is a star and is the center of our solar system.",
+            "tfIdfScore": 2.537713408470154
+        },
+        {
+            "context": "The Sun is at the center of the solar system. The Sun makes up almost all of the mass of the solar system. Explore More Use the resource below to answer the questions that follow. Introduction to the Sun and Solar System at Click on the image above for more content 4. What is the structure of the solar system from the center to the farthest 5. Which type of solar system bodies come from the farthest part of the solar Review Interior of the Sun Describe the internal layers of the Sun. Different instruments pick up different features of the Sun. \" Explore Space \" \u2013 Describes the sun and planets of our solar system [Lexile 450]",
+            "isCorrect": false,
+            "text": "The sun is a planet and is the center of our solar system.",
+            "tfIdfScore": 2.3289788961410522
+        },
+        {
+            "context": "The Sun is at the center of the solar system. The Sun makes up almost all of the mass of the solar system. Explore More Use the resource below to answer the questions that follow. Introduction to the Sun and Solar System at Click on the image above for more content 4. What is the structure of the solar system from the center to the farthest 5. Which type of solar system bodies come from the farthest part of the solar Review Interior of the Sun Describe the internal layers of the Sun. Different instruments pick up different features of the Sun. Moving in relation to the sun - following the sun - avoiding the sun",
+            "isCorrect": false,
+            "text": "The sun is a star made up of rocky material.",
+            "tfIdfScore": 1.772624671459198
+        },
+        {
+            "context": "The Sun is at the center of the solar system. The Sun makes up almost all of the mass of the solar system. Explore More Use the resource below to answer the questions that follow. Introduction to the Sun and Solar System at Click on the image above for more content 4. What is the structure of the solar system from the center to the farthest 5. Which type of solar system bodies come from the farthest part of the solar Review Interior of the Sun Describe the internal layers of the Sun. Different instruments pick up different features of the Sun. The brightest star in the sky is the Sun.",
+            "isCorrect": false,
+            "text": "The sun is a star that is the same size as all the other stars in the sky.",
+            "tfIdfScore": 1.7624441385269165
+        }
+    ],
+    "etScores": {
+        "?": 0.9504025171045214,
+        "Which": 0.0005734542093705386,
+        "describes": 0.4934047766029835,
+        "following": 0.06153946034610271,
+        "of": 4.064276572535164e-05,
+        "sun": 0.9989372154376497,
+        "the": 1.2098840625185402e-05
+    },
+    "id": "101294",
+    "question": "Which of the following describes the sun?"
+}
+
+{
+    "answers": [
+        {
+            "context": "44 A: After water condenses, it may form clouds that produce precipitation such as rain. Summary The process in which water vapor or any other gas changes to a liquid is called condensation. The temperature at which condensation of water vapor occurs is called the dew point. The dew point varies depending on air temperature and moisture content. Condensation plays an important role in the water cycle. Without it, Earth\u2019s water could not recycle. Explore More Use the dew point calculator at the following URL to answer the questions below. condense Condensation is a change of state in which gas becomes liquid by cooling.",
+            "isCorrect": false,
+            "text": "a liquid changing to a solid",
+            "tfIdfScore": 1.7102826237678528
+        },
+        {
+            "context": "Once the substance, the surface area, and the temperature are established, the rate of evaporation will be constant. The rate at which the gas condenses is determined by the partial pressure of the gas, the surface area, and what substance is involved. Once the substance and surface area is established, the rate of condensation will only vary depending on the partial pressure of the gas. As the partial pressure of the gas in the space above the liquid increases, the rate of condensation will increase. In the section on evaporation, it was pointed out that as a liquid evaporates, the remaining liquid cools because the hottest molecules are leaving so the average decreases and the heat of vaporization is being absorbed from the remaining molecules. For similar reasons, when a gas is undergoing condensation, the temperature of the remaining gas increases because the coolest molecules are condensing, thus raising the average of 535 those left behind, and the condensing molecules must give up the heat of condensation. Vapor Pressure Equilibrium You can follow the progress of the two activities (evaporation and condensation) in a thought experiment. condense Condensation is a change of state in which gas becomes liquid by cooling.",
+            "isCorrect": false,
+            "text": "a solid changing to a gas",
+            "tfIdfScore": 1.6980673670768738
+        },
+        {
+            "context": "44 A: After water condenses, it may form clouds that produce precipitation such as rain. Summary The process in which water vapor or any other gas changes to a liquid is called condensation. The temperature at which condensation of water vapor occurs is called the dew point. The dew point varies depending on air temperature and moisture content. Condensation plays an important role in the water cycle. Without it, Earth\u2019s water could not recycle. Explore More Use the dew point calculator at the following URL to answer the questions below. condense Condensation is a change of state in which gas becomes liquid by cooling.",
+            "isCorrect": false,
+            "text": "a solid changing to a liquid",
+            "tfIdfScore": 1.7102826237678528
+        },
+        {
+            "context": "44 A: After water condenses, it may form clouds that produce precipitation such as rain. Summary The process in which water vapor or any other gas changes to a liquid is called condensation. The temperature at which condensation of water vapor occurs is called the dew point. The dew point varies depending on air temperature and moisture content. Condensation plays an important role in the water cycle. Without it, Earth\u2019s water could not recycle. Explore More Use the dew point calculator at the following URL to answer the questions below. condense Condensation is a change of state in which gas becomes liquid by cooling.",
+            "isCorrect": true,
+            "text": "a gas changing to a liquid",
+            "tfIdfScore": 2.085199773311615
+        }
+    ],
+    "etScores": {
+        "?": 0.8482244551181793,
+        "Which": 3.2221293025713748e-06,
+        "condensation": 0.9977399884986766,
+        "describes": 0.4687488943338394,
+        "following": 0.0005701066773326601,
+        "of": 6.430726415374011e-07,
+        "the": 1.3372486082907641e-07
+    },
+    "id": "TIMSS_2011_4_pg76",
+    "question": "Which of the following describes condensation?"
+}
+*********************************************************
+
+Done checking datasets: 
+	data/questions/KaggleAllenAI/kaggle_allen_ai_val.json
+	data/questions/ARC/Easy/ARC-Easy-Dev.json

@@ -1,0 +1,21 @@
+syntax = "proto2";
+
+package data;
+ 
+option java_package = "data";
+option java_outer_classname = "ConcretenessRatingsProtos";
+ 
+message Entry {
+    required bool bigram = 1;  // Whether it is a single word or a two-word expression.
+    required double rating = 2;  // The mean concreteness rating.
+    required double rating_sd = 3;  // The standard deviation of the concreteness ratings.
+    required uint32 unknown = 4;  // The number of persons indicating they did not know the word.
+    required uint32 num_persons = 5;  // The total number of persons who rated the word.
+    required double known_percentage = 6;  // Percentage participants who knew the word.
+    required uint64 frequency_count = 7;  // The SUBTLEX-US frequency count (on a total of 51 million).
+    required string type = 8;  // Adjective, Noun, Verb, N/A.
+}
+ 
+message Ratings {
+    map<string, Entry> ratings_map = 1;
+}

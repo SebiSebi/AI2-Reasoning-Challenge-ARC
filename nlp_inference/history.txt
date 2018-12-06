@@ -1,0 +1,484 @@
+1) Model 1 (Glove and learning) -> 74%
+    output_1 = LSTM(100, dropout=0.09, recurrent_dropout=0.09)(premise_emb)
+    output_2 = LSTM(100, dropout=0.09, recurrent_dropout=0.09)(hypothesis_emb)
+    output_3 = concatenate([output_1, output_2])
+    output_4 = Dropout(0.2)(output_3)
+
+    output_5 = Dense(256, kernel_regularizer=regularizers.l2(0.001),
+                     activation='tanh')(output_4)
+    output_6 = Dense(256, kernel_regularizer=regularizers.l2(0.001),
+                     activation='tanh')(output_5)
+    output_7 = Dense(256, kernel_regularizer=regularizers.l2(0.001),
+                     activation='tanh')(output_6)
+    output_8 = Dense(256, kernel_regularizer=regularizers.l2(0.001),
+                     activation='tanh')(output_7)
+    output_9 = Dropout(0.3)(output_8)
+    output = Dense(3, activation='softmax')(output_9)
+
+	model.compile(loss=categorical_crossentropy,
+                  optimizer='adam',
+                  metrics=['accuracy'])
+
+	model.fit(
+        {'p_input': train_premise, 'h_input': train_hypothesis},
+        train_labels,
+        batch_size=200, epochs=10,
+        # verbose=2,
+        validation_data=(
+            {'p_input': val_premise, 'h_input': val_hypothesis},
+            val_labels
+        ),
+        callbacks=[checkpoint]
+    )
+
+	Output:
+	
+	Train on 549367 samples, validate on 9842 samples
+	Epoch 1/10
+	549367/549367 [==============================] - 641s 1ms/step - loss: 0.8766 - acc: 0.6401 - val_loss: 0.7380 - val_acc: 0.6854
+	Epoch 2/10
+	549367/549367 [==============================] - 631s 1ms/step - loss: 0.7165 - acc: 0.6988 - val_loss: 0.6883 - val_acc: 0.7166
+	Epoch 3/10
+	549367/549367 [==============================] - 641s 1ms/step - loss: 0.6598 - acc: 0.7303 - val_loss: 0.6690 - val_acc: 0.7293
+	Epoch 4/10
+	549367/549367 [==============================] - 641s 1ms/step - loss: 0.6177 - acc: 0.7517 - val_loss: 0.6809 - val_acc: 0.7293
+	Epoch 5/10
+	549367/549367 [==============================] - 617s 1ms/step - loss: 0.5832 - acc: 0.7681 - val_loss: 0.6768 - val_acc: 0.7283
+	Epoch 6/10
+	549367/549367 [==============================] - 636s 1ms/step - loss: 0.5536 - acc: 0.7828 - val_loss: 0.6757 - val_acc: 0.7356
+	Epoch 7/10
+	549367/549367 [==============================] - 634s 1ms/step - loss: 0.5257 - acc: 0.7958 - val_loss: 0.6867 - val_acc: 0.7369
+	Epoch 8/10
+	549367/549367 [==============================] - 624s 1ms/step - loss: 0.5032 - acc: 0.8066 - val_loss: 0.6942 - val_acc: 0.7407
+	Epoch 9/10
+	549367/549367 [==============================] - 639s 1ms/step - loss: 0.4818 - acc: 0.8159 - val_loss: 0.7048 - val_acc: 0.7360
+	Epoch 10/10
+	549367/549367 [==============================] - 640s 1ms/step - loss: 0.4631 - acc: 0.8244 - val_loss: 0.7178 - val_acc: 0.7381
+	Test loss: 0.7235388710658014
+	Test accuracy: 0.7368688925081434
+
+
+2) Model 2 (Glove and learning) => 79%
+    output_1 = LSTM(100)(premise_emb)
+    output_2 = LSTM(100)(hypothesis_emb)
+    output_3 = concatenate([output_1, output_2])
+    output_4 = Dropout(0.2)(output_3)
+
+    output_5 = Dense(256, W_regularizer=l2(0.00000), activation='relu')(output_4)
+    output_6 = Dense(256, W_regularizer=l2(0.00000), activation='relu')(output_5)
+    output_7 = Dense(256, W_regularizer=l2(0.00000), activation='relu')(output_6)
+    output_8 = Dense(256, W_regularizer=l2(0.00000), activation='relu')(output_7)
+    output_9 = Dropout(0.2)(output_8)
+
+    output = Dense(3, activation='softmax')(output_9)
+
+	model.fit(
+        {'p_input': train_premise, 'h_input': train_hypothesis},
+        train_labels,
+        batch_size=320, epochs=10,
+        # verbose=2,
+        validation_data=(
+            {'p_input': val_premise, 'h_input': val_hypothesis},
+            val_labels
+        ),
+        callbacks=[checkpoint]
+    )
+    score = model.evaluate(
+            {'p_input': test_premise, 'h_input': test_hypothesis},
+            test_labels,
+            verbose=0
+    )
+
+	Epoch 1/10
+	549367/549367 [==============================] - 375s 682us/step - loss: 0.7415 - acc: 0.6747 - val_loss: 0.6157 - val_acc: 0.7457
+	Epoch 2/10
+	549367/549367 [==============================] - 370s 674us/step - loss: 0.5967 - acc: 0.7534 - val_loss: 0.5677 - val_acc: 0.7708
+	Epoch 3/10
+	549367/549367 [==============================] - 361s 657us/step - loss: 0.5305 - acc: 0.7857 - val_loss: 0.5416 - val_acc: 0.7839
+	Epoch 4/10
+	549367/549367 [==============================] - 377s 686us/step - loss: 0.4835 - acc: 0.8071 - val_loss: 0.5422 - val_acc: 0.7844
+	Epoch 5/10
+	549367/549367 [==============================] - 372s 678us/step - loss: 0.4439 - acc: 0.8248 - val_loss: 0.5450 - val_acc: 0.7915
+	Epoch 6/10
+	549367/549367 [==============================] - 375s 682us/step - loss: 0.4116 - acc: 0.8388 - val_loss: 0.5738 - val_acc: 0.7886
+	Epoch 7/10
+	549367/549367 [==============================] - 372s 676us/step - loss: 0.3827 - acc: 0.8510 - val_loss: 0.5866 - val_acc: 0.7836
+	Epoch 8/10
+	549367/549367 [==============================] - 358s 651us/step - loss: 0.3571 - acc: 0.8615 - val_loss: 0.5908 - val_acc: 0.7868
+	Epoch 9/10
+	549367/549367 [==============================] - 369s 671us/step - loss: 0.3344 - acc: 0.8711 - val_loss: 0.6324 - val_acc: 0.7844
+	Epoch 10/10
+	549367/549367 [==============================] - 368s 669us/step - loss: 0.3134 - acc: 0.8797 - val_loss: 0.6534 - val_acc: 0.7805
+	Test loss: 0.6848155164466231
+	Test accuracy: 0.7695439739413681
+
+3) Model 3 (Glove and learning) => 79%
+
+    output_1 = LSTM(150)(premise_emb)
+    output_2 = LSTM(150)(hypothesis_emb)
+    output_1 = BatchNormalization()(output_1)
+    output_2 = BatchNormalization()(output_2)
+
+    output_3 = concatenate([output_1, output_2])
+    output_4 = Dropout(0.2)(output_3)
+
+    output_5 = Dense(300, W_regularizer=l2(0.00001), activation='relu')(output_4)
+    output_5 = Dropout(0.1)(output_5)
+    output_5 = BatchNormalization()(output_5)
+
+    output_6 = Dense(300, W_regularizer=l2(0.00001), activation='relu')(output_5)
+    output_6 = Dropout(0.1)(output_6)
+    output_6 = BatchNormalization()(output_6)
+
+    output_7 = Dense(300, W_regularizer=l2(0.00001), activation='relu')(output_6)
+    output_7 = Dropout(0.1)(output_7)
+    output_7 = BatchNormalization()(output_7)
+
+    output_8 = Dense(300, W_regularizer=l2(0.00001), activation='relu')(output_7)
+    output_9 = Dropout(0.5)(output_8)
+
+    output = Dense(3, activation='softmax')(output_9)
+
+	model.fit(
+        {'p_input': train_premise, 'h_input': train_hypothesis},
+        train_labels,
+        batch_size=320, epochs=100,
+        # verbose=2,
+        validation_data=(
+            {'p_input': val_premise, 'h_input': val_hypothesis},
+            val_labels
+        ),
+        callbacks=[checkpoint]
+    )
+    score = model.evaluate(
+            {'p_input': test_premise, 'h_input': test_hypothesis},
+            test_labels,
+            verbose=0
+    )
+
+	Epoch 1/100
+	549367/549367 [==============================] - 443s 806us/step - loss: 0.7943 - acc: 0.6570 - val_loss: 0.6506 - val_acc: 0.7340
+	Epoch 2/100
+	549367/549367 [==============================] - 438s 797us/step - loss: 0.6295 - acc: 0.7456 - val_loss: 0.5960 - val_acc: 0.7636
+	Epoch 3/100
+	549367/549367 [==============================] - 427s 777us/step - loss: 0.5619 - acc: 0.7792 - val_loss: 0.5617 - val_acc: 0.7807
+	Epoch 4/100
+	549367/549367 [==============================] - 439s 800us/step - loss: 0.5142 - acc: 0.8013 - val_loss: 0.5582 - val_acc: 0.7827
+	Epoch 5/100
+	549367/549367 [==============================] - 440s 801us/step - loss: 0.4740 - acc: 0.8198 - val_loss: 0.5569 - val_acc: 0.7920
+	Epoch 6/100
+	549367/549367 [==============================] - 441s 804us/step - loss: 0.4398 - acc: 0.8350 - val_loss: 0.5647 - val_acc: 0.7920
+	Epoch 7/100
+	549367/549367 [==============================] - 426s 776us/step - loss: 0.4103 - acc: 0.8478 - val_loss: 0.5755 - val_acc: 0.7874
+	Epoch 8/100
+	549367/549367 [==============================] - 439s 798us/step - loss: 0.3849 - acc: 0.8586 - val_loss: 0.5925 - val_acc: 0.7879
+	Epoch 9/100
+	549367/549367 [==============================] - 439s 799us/step - loss: 0.3619 - acc: 0.8685 - val_loss: 0.6091 - val_acc: 0.7890
+	Epoch 10/100
+	549367/549367 [==============================] - 438s 797us/step - loss: 0.3415 - acc: 0.8766 - val_loss: 0.6340 - val_acc: 0.7860
+	Epoch 11/100
+	549367/549367 [==============================] - 428s 778us/step - loss: 0.3232 - acc: 0.8837 - val_loss: 0.6494 - val_acc: 0.7858
+	Epoch 12/100
+	549367/549367 [==============================] - 441s 802us/step - loss: 0.3058 - acc: 0.8913 - val_loss: 0.6962 - val_acc: 0.7872
+	Epoch 13/100
+	549367/549367 [==============================] - 439s 800us/step - loss: 0.2910 - acc: 0.8970 - val_loss: 0.6947 - val_acc: 0.7842
+	Epoch 14/100
+	549367/549367 [==============================] - 440s 801us/step - loss: 0.2762 - acc: 0.9030 - val_loss: 0.7005 - val_acc: 0.7857
+	Epoch 15/100
+	549367/549367 [==============================] - 437s 796us/step - loss: 0.2638 - acc: 0.9079 - val_loss: 0.7356 - val_acc: 0.7829
+	Epoch 16/100
+	549367/549367 [==============================] - 439s 799us/step - loss: 0.2517 - acc: 0.9129 - val_loss: 0.7886 - val_acc: 0.7808
+	Epoch 17/100
+	549367/549367 [==============================] - 442s 805us/step - loss: 0.2414 - acc: 0.9165 - val_loss: 0.8219 - val_acc: 0.7814
+	Epoch 18/100
+	549367/549367 [==============================] - 441s 802us/step - loss: 0.2307 - acc: 0.9208 - val_loss: 0.8376 - val_acc: 0.7750
+	Epoch 19/100
+	549367/549367 [==============================] - 442s 804us/step - loss: 0.2217 - acc: 0.9246 - val_loss: 0.7850 - val_acc: 0.7781
+	Epoch 20/100
+	549367/549367 [==============================] - 423s 771us/step - loss: 0.2139 - acc: 0.9275 - val_loss: 0.8043 - val_acc: 0.7737
+	Epoch 21/100
+	549367/549367 [==============================] - 441s 804us/step - loss: 0.2045 - acc: 0.9317 - val_loss: 0.8484 - val_acc: 0.7763
+	Epoch 22/100
+	549367/549367 [==============================] - 442s 804us/step - loss: 0.1980 - acc: 0.9342 - val_loss: 0.8816 - val_acc: 0.7764
+	Epoch 23/100
+
+4) Model 4 (Glove with training) => 80%
+
+    output_1 = LSTM(300)(premise_emb)
+    output_2 = LSTM(300)(hypothesis_emb)
+    # output_1 = BatchNormalization()(output_1)
+    # output_2 = BatchNormalization()(output_2)
+
+    output_3 = concatenate([output_1, output_2])
+    output_4 = Dropout(0.2)(output_3)
+
+    output_5 = Dense(512, W_regularizer=l2(0.00000), activation='relu')(output_4)
+    output_5 = Dropout(0.1)(output_5)
+    # output_5 = BatchNormalization()(output_5)
+
+    output_6 = Dense(512, W_regularizer=l2(0.00000), activation='relu')(output_5)
+    output_6 = Dropout(0.1)(output_6)
+    # output_6 = BatchNormalization()(output_6)
+
+    output_7 = Dense(512, W_regularizer=l2(0.00000), activation='relu')(output_6)
+    output_7 = Dropout(0.1)(output_7)
+    # output_7 = BatchNormalization()(output_7)
+
+    output_8 = Dense(512, W_regularizer=l2(0.00000), activation='relu')(output_7)
+    output_9 = Dropout(0.2)(output_8)
+	
+    output = Dense(3, activation='softmax')(output_9)
+
+	model.fit(
+        {'p_input': train_premise, 'h_input': train_hypothesis},
+        train_labels,
+        batch_size=350, epochs=20,
+        verbose=2,
+        validation_data=(
+            {'p_input': val_premise, 'h_input': val_hypothesis},
+            val_labels
+        ),
+        callbacks=[checkpoint]
+    )
+
+	Epoch 1/20
+ - 429s - loss: 0.7199 - acc: 0.6868 - val_loss: 0.6001 - val_acc: 0.7513
+	Epoch 2/20
+ - 442s - loss: 0.5744 - acc: 0.7650 - val_loss: 0.5439 - val_acc: 0.7787
+	Epoch 3/20
+ - 436s - loss: 0.5045 - acc: 0.7988 - val_loss: 0.5405 - val_acc: 0.7915
+	Epoch 4/20
+ - 442s - loss: 0.4509 - acc: 0.8230 - val_loss: 0.5383 - val_acc: 0.7893
+	Epoch 5/20
+ - 428s - loss: 0.4051 - acc: 0.8425 - val_loss: 0.5529 - val_acc: 0.7919
+	Epoch 6/20
+ - 441s - loss: 0.3644 - acc: 0.8587 - val_loss: 0.5564 - val_acc: 0.7984
+	Epoch 7/20
+ i- 440s - loss: 0.3290 - acc: 0.8741 - val_loss: 0.5880 - val_acc: 0.7956
+
+5) Model 5 (Glove with training + Batch norm) => putin mai mult de 80% best so far
+
+	output_1 = LSTM(300)(premise_emb)
+    output_2 = LSTM(300)(hypothesis_emb)
+    output_1 = BatchNormalization()(output_1)
+    output_2 = BatchNormalization()(output_2)
+
+    output_3 = concatenate([output_1, output_2])
+    output_4 = Dropout(0.2)(output_3)
+
+    output_5 = Dense(512, W_regularizer=l2(0.00000))(output_4)
+    output_5 = BatchNormalization()(output_5)
+    output_5 = Activation('relu')(output_5)
+    output_5 = Dropout(0.1)(output_5)
+
+    output_6 = Dense(512, W_regularizer=l2(0.00000))(output_5)
+    output_6 = BatchNormalization()(output_6)
+    output_6 = Activation('relu')(output_6)
+    output_6 = Dropout(0.1)(output_6)
+
+    output_7 = Dense(512, W_regularizer=l2(0.00000))(output_6)
+    output_7 = BatchNormalization()(output_7)
+    output_7 = Activation('relu')(output_7)
+    output_7 = Dropout(0.1)(output_7)
+
+    output_8 = Dense(512, W_regularizer=l2(0.00000))(output_7)
+    output_8 = Activation('relu')(output_8)
+    output_9 = Dropout(0.2)(output_8)
+
+    output = Dense(3, activation='softmax')(output_9)
+
+	model.fit(
+        {'p_input': train_premise, 'h_input': train_hypothesis},
+        train_labels,
+        batch_size=350, epochs=20,
+        verbose=2,
+        validation_data=(
+            {'p_input': val_premise, 'h_input': val_hypothesis},
+            val_labels
+        ),
+        callbacks=[checkpoint]
+    )
+	
+	Epoch 1/20
+	 - 476s - loss: 0.7178 - acc: 0.6902 - val_loss: 0.5961 - val_acc: 0.7597
+	Epoch 2/20
+	 - 464s - loss: 0.5732 - acc: 0.7664 - val_loss: 0.5495 - val_acc: 0.7833
+	Epoch 3/20
+	 - 470s - loss: 0.5058 - acc: 0.7987 - val_loss: 0.5258 - val_acc: 0.7931
+	Epoch 4/20
+	 - 474s - loss: 0.4536 - acc: 0.8221 - val_loss: 0.5263 - val_acc: 0.7980
+	Epoch 5/20
+	 - 465s - loss: 0.4082 - acc: 0.8421 - val_loss: 0.5244 - val_acc: 0.7984
+	Epoch 6/20
+	 - 461s - loss: 0.3683 - acc: 0.8588 - val_loss: 0.5428 - val_acc: 0.8010
+	Epoch 7/20
+	 - 475s - loss: 0.3339 - acc: 0.8732 - val_loss: 0.5751 - val_acc: 0.7995
+	Epoch 8/20
+	 - 476s - loss: 0.3008 - acc: 0.8861 - val_loss: 0.6103 - val_acc: 0.7939
+	Epoch 9/20
+	 - 475s - loss: 0.2729 - acc: 0.8971 - val_loss: 0.6246 - val_acc: 0.7969
+	Epoch 10/20
+	 - 468s - loss: 0.2485 - acc: 0.9067 - val_loss: 0.6822 - val_acc: 0.7975
+	Epoch 11/20
+	 - 478s - loss: 0.2260 - acc: 0.9153 - val_loss: 0.7294 - val_acc: 0.7928
+
+	Acelasi model dar cu tanh in loc de relu ajunge la 77.6% :)
+	Modelul cu tanh de mai sus cu 100 LSTM si 256 Dense ajunge tot la 77.6% :)
+	=> ca in articol
+
+6) Model 6 (Glove and training) bigger regularization => accuracy dropped to 78%
+	
+	output_1 = LSTM(300)(premise_emb)
+    output_2 = LSTM(300)(hypothesis_emb)
+    output_1 = BatchNormalization()(output_1)
+    output_2 = BatchNormalization()(output_2)
+
+    output_3 = concatenate([output_1, output_2])
+    output_4 = Dropout(0.2)(output_3)
+
+    output_5 = Dense(512, W_regularizer=l2(0.0005))(output_4)
+    output_5 = BatchNormalization()(output_5)
+    output_5 = Activation('relu')(output_5)
+    output_5 = Dropout(0.1)(output_5)
+
+    output_6 = Dense(512, W_regularizer=l2(0.0005))(output_5)
+    output_6 = BatchNormalization()(output_6)
+    output_6 = Activation('relu')(output_6)
+    output_6 = Dropout(0.1)(output_6)
+
+    output_7 = Dense(512, W_regularizer=l2(0.0005))(output_6)
+    output_7 = BatchNormalization()(output_7)
+    output_7 = Activation('relu')(output_7)
+    output_7 = Dropout(0.1)(output_7)
+
+    output_8 = Dense(512, W_regularizer=l2(0.0005))(output_7)
+    output_8 = Activation('relu')(output_8)
+    output_9 = Dropout(0.2)(output_8)
+
+	model.fit(
+        {'p_input': train_premise, 'h_input': train_hypothesis},
+        train_labels,
+        batch_size=350, epochs=20,
+        verbose=2,
+        validation_data=(
+            {'p_input': val_premise, 'h_input': val_hypothesis},
+            val_labels
+        ),
+        callbacks=[checkpoint]
+    )
+    score = model.evaluate(
+            {'p_input': test_premise, 'h_input': test_hypothesis},
+            test_labels,
+            verbose=0
+    )
+
+	Train on 549367 samples, validate on 9842 samples
+	Epoch 1/20
+	- 476s - loss: 1.0227 - acc: 0.6842 - val_loss: 0.6749 - val_acc: 0.7395
+	Epoch 2/20
+	- 472s - loss: 0.6521 - acc: 0.7523 - val_loss: 0.6319 - val_acc: 0.7642
+	Epoch 3/20
+	- 468s - loss: 0.5983 - acc: 0.7804 - val_loss: 0.6124 - val_acc: 0.7747
+	Epoch 4/20
+	- 482s - loss: 0.5537 - acc: 0.8014 - val_loss: 0.6097 - val_acc: 0.7756
+	Epoch 5/20
+	- 482s - loss: 0.5138 - acc: 0.8190 - val_loss: 0.6088 - val_acc: 0.7798
+	Epoch 6/20
+	- 473s - loss: 0.4782 - acc: 0.8346 - val_loss: 0.6362 - val_acc: 0.7762
+	Epoch 7/20
+	- 478s - loss: 0.4455 - acc: 0.8473 - val_loss: 0.6315 - val_acc: 0.7804
+	Epoch 8/20
+	- 471s - loss: 0.4164 - acc: 0.8595 - val_loss: 0.6442 - val_acc: 0.7811
+	Epoch 9/20
+	- 477s - loss: 0.3907 - acc: 0.8698 - val_loss: 0.6705 - val_acc: 0.7817
+	Epoch 10/20
+	- 464s - loss: 0.3669 - acc: 0.8795 - val_loss: 0.6661 - val_acc: 0.7765
+	Epoch 11/20
+	- 473s - loss: 0.3460 - acc: 0.8876 - val_loss: 0.7038 - val_acc: 0.7758
+	Epoch 12/20
+	- 473s - loss: 0.3261 - acc: 0.8956 - val_loss: 0.7745 - val_acc: 0.7743
+	Epoch 13/20
+	- 474s - loss: 0.3091 - acc: 0.9025 - val_loss: 0.7585 - val_acc: 0.7737
+
+7) Model 7 (Glove *no* training) => best so far 81%
+
+	output_1 = LSTM(300)(premise_emb)
+    output_2 = LSTM(300)(hypothesis_emb)
+    output_1 = BatchNormalization()(output_1)
+    output_2 = BatchNormalization()(output_2)
+
+    output_3 = concatenate([output_1, output_2])
+    output_4 = Dropout(0.2)(output_3)
+
+    output_5 = Dense(512)(output_4)
+    output_5 = BatchNormalization()(output_5)
+    output_5 = Activation('relu')(output_5)
+    output_5 = Dropout(0.1)(output_5)
+
+    output_6 = Dense(512)(output_5)
+    output_6 = BatchNormalization()(output_6)
+    output_6 = Activation('relu')(output_6)
+    output_6 = Dropout(0.1)(output_6)
+
+    output_7 = Dense(512)(output_6)
+    output_7 = BatchNormalization()(output_7)
+    output_7 = Activation('relu')(output_7)
+    output_7 = Dropout(0.1)(output_7)
+
+    output_8 = Dense(512)(output_7)
+    output_8 = Activation('relu')(output_8)
+    output_9 = Dropout(0.2)(output_8)
+
+    output = Dense(3, activation='softmax')(output_9)
+
+	model.fit(
+        {'p_input': train_premise, 'h_input': train_hypothesis},
+        train_labels,
+        batch_size=320, epochs=15,
+        # verbose=2,
+        validation_data=(
+            {'p_input': val_premise, 'h_input': val_hypothesis},
+            val_labels
+        ),
+        callbacks=[checkpoint]
+    )
+
+	Epoch 1/20
+	- 458s - loss: 0.7430 - acc: 0.6742 - val_loss: 0.6331 - val_acc: 0.7410
+	Epoch 2/20
+	- 454s - loss: 0.6168 - acc: 0.7439 - val_loss: 0.5623 - val_acc: 0.7665
+	Epoch 3/20
+	- 454s - loss: 0.5642 - acc: 0.7698 - val_loss: 0.5321 - val_acc: 0.7876
+	Epoch 4/20
+	- 440s - loss: 0.5281 - acc: 0.7873 - val_loss: 0.5124 - val_acc: 0.7935
+	Epoch 5/20
+	- 461s - loss: 0.4970 - acc: 0.8012 - val_loss: 0.5012 - val_acc: 0.8018
+	Epoch 6/20
+	- 461s - loss: 0.4680 - acc: 0.8143 - val_loss: 0.5014 - val_acc: 0.8013
+	Epoch 7/20
+	- 461s - loss: 0.4406 - acc: 0.8256 - val_loss: 0.4974 - val_acc: 0.8061
+	Epoch 8/20
+	- 446s - loss: 0.4170 - acc: 0.8366 - val_loss: 0.5053 - val_acc: 0.8022
+	Epoch 9/20
+	- 461s - loss: 0.3930 - acc: 0.8467 - val_loss: 0.5181 - val_acc: 0.8029
+	Epoch 10/20
+	- 461s - loss: 0.3698 - acc: 0.8560 - val_loss: 0.5211 - val_acc: 0.8054
+	Epoch 11/20
+	- 460s - loss: 0.3467 - acc: 0.8658 - val_loss: 0.5252 - val_acc: 0.8044
+	Epoch 12/20
+	- 451s - loss: 0.3288 - acc: 0.8732 - val_loss: 0.5341 - val_acc: 0.8058
+	Epoch 13/20
+	- 460s - loss: 0.3107 - acc: 0.8805 - val_loss: 0.5565 - val_acc: 0.8073
+	Epoch 14/20
+	- 458s - loss: 0.2936 - acc: 0.8872 - val_loss: 0.5790 - val_acc: 0.8052
+	Epoch 15/20
+	- 459s - loss: 0.2797 - acc: 0.8932 - val_loss: 0.6045 - val_acc: 0.8016
+	Epoch 16/20
+	- 445s - loss: 0.2641 - acc: 0.8996 - val_loss: 0.6020 - val_acc: 0.8068
+	Epoch 17/20
+	- 458s - loss: 0.2514 - acc: 0.9041 - val_loss: 0.6113 - val_acc: 0.8013
+	Epoch 18/20
+	- 459s - loss: 0.2400 - acc: 0.9086 - val_loss: 0.6201 - val_acc: 0.7961
+
+	Adding recurrent_dropout = 0.1 to both LSTM => slightly over 81% (81.04)
+

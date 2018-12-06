@@ -1,0 +1,158 @@
+1) Model 1, train on dataset with no duplicates and balanced 0..5.
+			30 epochs, batch size: 250, accuracy around 65%
+		
+			Final result: model.0.657-012.hdf5
+			Train acc: 0.7159
+			
+			Evaluated on 4156 terms.
+			Accuracy: 64.798%
+			Exp accuracy: 1.809
+			Linear accuriacy: 0.630
+
+			Evaluated on 4156 terms.
+			Binary accuracy: 85.587%
+			Correct confidence 89.261%
+			Wrong confidence 66.759%
+			
+			-> no bidirectional, 50d GloVe, no other features.
+			See model1.png	
+
+2) Model 2, same as above but with biLSTM. Performs poorer than
+			simple LSTM especially on binary acc.
+
+			Final result: model.0.649-006.hdf5
+			Train acc: 0.8746
+			
+			Evaluated on 4156 terms.
+			Accuracy: 64.028%
+			Exp accuracy: 1.990
+			Linear accuracy: 0.726
+			Reading data from data/essential_terms_test.json
+
+			Evaluated on 4156 terms.
+			Binary accuracy: 85.250%
+			Correct confidence 86.262%
+			Wrong confidence 65.114%
+
+			-> no bidirectional, 50d GloVe, no other features.
+			See model2.png
+
+3) Model 3: LSTM simplu + is_science_term + concretness_rating
+			Acuratetea e aceeasi, putin peste 65%, dar creste
+			confidence si putin binary_accuracy:
+
+			Evaluated on 4156 terms.
+			Binary accuracy: 85.900%
+			Correct confidence 90.581%
+			Wrong confidence 67.054%
+
+
+4) Model 4: LSTM + toate feature-urile (pana la PMI pe 30.000.000 de propozitii)
+
+	Found 98.96% embeddings.
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+is_stop_term_input (InputLayer) (None, 1)            0                                            
+__________________________________________________________________________________________________
+deg_centrality_input (InputLaye (None, 4)            0                                            
+__________________________________________________________________________________________________
+close_centrality_input (InputLa (None, 4)            0                                            
+__________________________________________________________________________________________________
+eigen_centrality_input (InputLa (None, 4)            0                                            
+__________________________________________________________________________________________________
+is_science_term_input (InputLay (None, 1)            0                                            
+__________________________________________________________________________________________________
+concretness_rating_input (Input (None, 4)            0                                            
+__________________________________________________________________________________________________
+pos_embeddings_input (InputLaye (None, 5)            0                                            
+__________________________________________________________________________________________________
+concatenate_2 (Concatenate)     (None, 13)           0           is_stop_term_input[0][0]         
+                                                                 deg_centrality_input[0][0]       
+                                                                 close_centrality_input[0][0]     
+                                                                 eigen_centrality_input[0][0]     
+__________________________________________________________________________________________________
+pmi_values_input (InputLayer)   (None, 12)           0                                            
+__________________________________________________________________________________________________
+question_input (InputLayer)     (None, 27)           0                                            
+__________________________________________________________________________________________________
+answers_input (InputLayer)      (None, 28)           0                                            
+__________________________________________________________________________________________________
+term_input (InputLayer)         (None, 1)            0                                            
+__________________________________________________________________________________________________
+concatenate_3 (Concatenate)     (None, 36)           0           is_science_term_input[0][0]      
+                                                                 concretness_rating_input[0][0]   
+                                                                 pos_embeddings_input[0][0]       
+                                                                 concatenate_2[0][0]              
+                                                                 pmi_values_input[0][0]           
+                                                                 is_stop_term_input[0][0]         
+__________________________________________________________________________________________________
+embedding_question_test (Embedd (None, 27, 50)       96650       question_input[0][0]             
+__________________________________________________________________________________________________
+embedding_answer_test (Embeddin (None, 28, 50)       96650       answers_input[0][0]              
+__________________________________________________________________________________________________
+embedding_term_test (Embedding) (None, 1, 50)        96650       term_input[0][0]                 
+__________________________________________________________________________________________________
+dropout_2 (Dropout)             (None, 36)           0           concatenate_3[0][0]              
+__________________________________________________________________________________________________
+lstm_1 (LSTM)                   (None, 35)           12040       embedding_question_test[0][0]    
+__________________________________________________________________________________________________
+lstm_2 (LSTM)                   (None, 25)           7600        embedding_answer_test[0][0]      
+__________________________________________________________________________________________________
+flatten_1 (Flatten)             (None, 50)           0           embedding_term_test[0][0]        
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 75)           2775        dropout_2[0][0]                  
+__________________________________________________________________________________________________
+concatenate_1 (Concatenate)     (None, 110)          0           lstm_1[0][0]                     
+                                                                 lstm_2[0][0]                     
+                                                                 flatten_1[0][0]                  
+__________________________________________________________________________________________________
+dropout_3 (Dropout)             (None, 75)           0           dense_2[0][0]                    
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 60)           6660        concatenate_1[0][0]              
+__________________________________________________________________________________________________
+dense_3 (Dense)                 (None, 75)           5700        dropout_3[0][0]                  
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, 60)           0           dense_1[0][0]                    
+__________________________________________________________________________________________________
+dropout_4 (Dropout)             (None, 75)           0           dense_3[0][0]                    
+__________________________________________________________________________________________________
+concatenate_4 (Concatenate)     (None, 135)          0           dropout_1[0][0]                  
+                                                                 dropout_4[0][0]                  
+__________________________________________________________________________________________________
+dropout_5 (Dropout)             (None, 135)          0           concatenate_4[0][0]              
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 75)           10200       dropout_5[0][0]                  
+__________________________________________________________________________________________________
+dense_5 (Dense)                 (None, 6)            456         dense_4[0][0]                    
+==================================================================================================
+Total params: 335,381
+Trainable params: 45,431
+Non-trainable params: 289,950
+__________________________________________________________________________________________________
+
+            |  Correct class  |
+            |    1   |    0   |
+Predicted 1 |   982  |   295  |
+Predicted 0 |   247  |  2632  |
+
+Evaluated on 4156 terms.
+Binary accuracy: 86.959%
+Precision: 76.899%
+Recall: 79.902%
+F1: 0.784
+Correct confidence 90.511%
+Wrong confidence 67.810%
+
+	Cel mai bun de pana acum, foarte aproape de rezultatele din paper. Antrenat
+	pe tot setul de antrenare (fara under sau over sampling) cu batch size 4000.
+	Modelul poate fi gasit la lic_data/et_data/models/model4/
+
+5) Modelul final => 68.3% pe validare si F1 > 0.8
+	A fost antrenat cu ADAM pe batch de 4000 timp de 1zi cu
+	incercari limitate (pe virtuoso). Multe scoruri de 67.x,
+	se comporta mult mai bine. Au fost adaugate dep_embeddings
+	si crescut recurrent_dropout <- foarte important!!
+	Dropout mare a ajutat foarte mult sa ajunga la 68%.
+	Au fost crescute si dim layer-elelor (nu foarte mult, ~25%).
+	Modelul poate fi gasit la lic_data/et_data/models/model_final/

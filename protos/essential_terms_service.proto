@@ -1,0 +1,40 @@
+syntax = "proto2";
+
+package services;
+
+option java_package = "clients";
+option java_outer_classname = "ETServiceProtos";
+
+message ETScoresRequest {
+	message Entry {
+		required string question = 1;
+		repeated string answers = 2;
+		repeated string terms = 3;
+	}
+	
+	repeated Entry entries = 1;
+}
+
+message ETScoresResponse {
+	message Entry {
+		required string question = 1;
+		repeated string answers = 2;
+		map <string, double> scores = 3;
+	}
+	
+	repeated Entry entries = 1;
+	required string exit_code = 2;
+}
+
+message ETScoresCompressedResponse {
+	/* data is a compressed ETScoresResponse. */
+	required bytes data = 1;	
+}
+
+service ETService {
+	rpc GetEssentialnessScores(ETScoresRequest) returns (stream ETScoresCompressedResponse) {}
+
+	/* Returns random numbers. To be used for debug, because is much faster. */
+	/* bytes is a compressed ETScoresResponse. */
+	rpc GetEssentialnessScoresFake(ETScoresRequest) returns (stream ETScoresCompressedResponse) {}
+}

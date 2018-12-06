@@ -1,0 +1,23 @@
+{
+	"PERSON": 0,
+	"NORP": 1,
+	"FACILITY": 2,
+	"ORG": 3,
+	"GPE": 4,
+	"LOC": 5,
+	"PRODUCT": 6,
+	"EVENT": 7,
+	"WORK_OF_ART": 8,
+	"LAW": 9,
+	"LANGUAGE": 10,
+	"DATE": 11,
+	"TIME": 12,
+	"PERCENT": 13,
+	"MONEY": 14,
+	"QUANTITY": 15,
+	"ORDINAL": 16,
+	"CARDINAL": 17,
+	"FAC": 18,
+	"PER": 19,
+	"MISC": 20
+}
