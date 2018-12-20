@@ -58,4 +58,4 @@ Please contact `gpirtoaca@gmail.com` if you want to build and run the model. The
 Paper
 --------------------------
 
-TODO
+[Improving Retrieval-Based Question Answering with Deep Inference Models](https://arxiv.org/abs/1812.02971)
