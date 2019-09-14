@@ -21,6 +21,6 @@ Run: `python eval.py --help` to get the flag information.
 Re-training
 -----------
 
-Run: `python train.py`. Trained models will be saved into `models/` directory.
-The dataset split should be specified in the `settings.py`. By default, the training
+Run: `python train.py`. Trained models will be saved into the `models/` directory.
+The dataset split should be specified in `settings.py`. By default, the training
 is done on the ARC Easy dataset.
