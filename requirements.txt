@@ -47,7 +47,7 @@ pyparsing==2.2.0
 python-dateutil==2.7.2
 python-snappy==0.5.3
 pytz==2018.4
-PyYAML==3.12
+PyYAML==5.4
 redis==3.0.1
 regex==2017.4.5
 requests==2.20.1
